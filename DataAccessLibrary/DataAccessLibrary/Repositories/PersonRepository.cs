@@ -2,7 +2,7 @@
 using System.Linq;
 using DataAccessLibrary.Models;
 
-namespace DataAccessLibrary.Repository
+namespace DataAccessLibrary.Repositories
 {
     public class PersonRepository : IRepository
     {

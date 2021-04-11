@@ -1,7 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DataAccessLibrary.Repository;
+using DataAccessLibrary.Repositories;
 using System.Linq;
 using DataAccessLibrary.Models;
+using DataAccessLibrary.Queries;
 
 namespace TestDemoSQRS
 {

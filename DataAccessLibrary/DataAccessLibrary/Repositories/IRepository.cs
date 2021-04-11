@@ -1,9 +1,9 @@
 ﻿using DataAccessLibrary.Models;
 using System.Collections.Generic;
 
-namespace DataAccessLibrary.Repository
+namespace DataAccessLibrary.Repositories
 {
-    interface IRepository
+    public interface IRepository
     {
         public List<PersonModel> GetPeople();
         public PersonModel InsertPerson(string firstName, string lastName);
