@@ -11,19 +11,19 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Handlers
 {
-    public class GetPersonListHandler : IRequestHandler<GetPersonListQuery, List<PersonModel>>
+    public class GetPersonListHandler : IRequestHandler<GetPersonListQuery, List<HeroModel>>
     {
-        private readonly IRepository _repository;
+        private readonly IDataAccessLayer _repository;
 
         //MediatR doesnt replace DI, its just an improvment.
-        public GetPersonListHandler(IRepository repository)
+        public GetPersonListHandler(IDataAccessLayer repository)
         {
             _repository = repository;
         }
-        public Task<List<PersonModel>> Handle(GetPersonListQuery request, CancellationToken cancellationToken)
+        public Task<List<HeroModel>> Handle(GetPersonListQuery request, CancellationToken cancellationToken)
         {
-           var people = _repository.GetPeople();
-           return Task.FromResult(people);
+           var heroes = _repository.GetHeroes();
+           return Task.FromResult(heroes);
         }
     }
 }

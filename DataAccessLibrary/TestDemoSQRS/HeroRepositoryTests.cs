@@ -7,11 +7,11 @@ using DataAccessLibrary.Queries;
 namespace TestDemoSQRS
 {
     [TestClass]
-    public class PersonRepositoryTests
+    public class HeroRepositoryTests
     {
-        private readonly PersonRepository _repository;
+        private readonly HeroRepository _repository;
         public TestContext TestContext { get; set; }
-        public PersonRepositoryTests()
+        public HeroRepositoryTests()
         {
             _repository = new();
         }
@@ -22,7 +22,7 @@ namespace TestDemoSQRS
             //Done in Ctor
 
             //Act
-            var hasRecords = _repository.GetPeople().Any();
+            var hasRecords = _repository.GetHeroes().Any();
             //Assert
             Assert.IsTrue(hasRecords);
 
@@ -31,16 +31,16 @@ namespace TestDemoSQRS
         public void InsertNewRecordTest()
         {
             //Arrange
-            var peopleCount = _repository.GetPeople().Count;
-            PersonModel newPerson = new() {FirstName = "Mike", LastName = "Wazowski"};
+            var heroesCount = _repository.GetHeroes().Count;
+            HeroModel newHero = new() {FirstName = "Mike", LastName = "Wazowski"};
             //Done in Ctor
 
             //Act
             TestContext.WriteLine("Inserting new person Record");
-            _repository.InsertPerson(newPerson.FirstName, newPerson.LastName);
-            var countAfterInsert = _repository.GetPeople().Count();
+            _repository.InsertHero(newHero.FirstName, newHero.LastName);
+            var countAfterInsert = _repository.GetHeroes().Count();
             //Assert
-            Assert.AreEqual(peopleCount + 1, countAfterInsert);
+            Assert.AreEqual(heroesCount + 1, countAfterInsert);
 
         }
     }

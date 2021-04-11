@@ -5,10 +5,10 @@ using System.Collections.Generic;
 namespace DataAccessLibrary.Queries
 {
     //Shorthand For
-    public record GetPersonListQuery() : IRequest<List<PersonModel>>;
+    public record GetPersonListQuery() : IRequest<List<HeroModel>>;
 
     //Longhand
-    public class GetPersonListQueryOld : IRequest<List<PersonModel>>
+    public class GetPersonListQueryOld : IRequest<List<HeroModel>>
     {
 
     }
