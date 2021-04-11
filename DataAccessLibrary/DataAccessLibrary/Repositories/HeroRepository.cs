@@ -1,31 +1,32 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DataAccessLibrary.Models;
 
 namespace DataAccessLibrary.Repositories
 {
-    public class HeroRepository : IDataAccessLayer
+    public class HeroRepository : IHeroRepository
     {
         //new () c#9 Feature
-        private List<HeroModel> people = new();
+        private readonly List<HeroModel> _heroes = new();
         public HeroRepository()
         {
             SeedSampleData();
         }
         private void SeedSampleData()
         {
-            people.Add(new HeroModel { Id = 1, FirstName = "Tony", LastName = "Stark" });
-            people.Add(new HeroModel { Id = 2, FirstName = "Joe", LastName = "Bennett" });
+            _heroes.Add(new HeroModel { Id = 1, FirstName = "Tony", LastName = "Stark" });
+            _heroes.Add(new HeroModel { Id = 2, FirstName = "Joe", LastName = "Bennett" });
         }
-        public List<HeroModel> GetHeroes()
+        public Task<List<HeroModel>>  GetHeroes()
         {
-            return people;
+            return Task.FromResult(_heroes);
         }
         public HeroModel InsertHero(string firstName, string lastName)
         {
             HeroModel hero = new() { FirstName = firstName, LastName = lastName };
-            hero.Id = people.Max(x => x.Id) + 1;
-            people.Add(hero);
+            hero.Id = _heroes.Max(x => x.Id) + 1;
+            _heroes.Add(hero);
             return hero;
         }
     }

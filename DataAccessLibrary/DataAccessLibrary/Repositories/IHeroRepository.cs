@@ -1,11 +1,12 @@
 ﻿using DataAccessLibrary.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Repositories
 {
-    public interface IDataAccessLayer
+    public interface IHeroRepository
     {
-        public List<HeroModel> GetHeroes();
+        public Task<List<HeroModel>> GetHeroes();
         public HeroModel InsertHero(string firstName, string lastName);
     }
 }

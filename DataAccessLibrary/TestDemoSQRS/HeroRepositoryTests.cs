@@ -1,8 +1,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataAccessLibrary.Repositories;
 using System.Linq;
+using System.Threading.Tasks;
 using DataAccessLibrary.Models;
-using DataAccessLibrary.Queries;
 
 namespace TestDemoSQRS
 {
@@ -22,7 +22,7 @@ namespace TestDemoSQRS
             //Done in Ctor
 
             //Act
-            var hasRecords = _repository.GetHeroes().Any();
+            var hasRecords = _repository.GetHeroes().Result.Any();
             //Assert
             Assert.IsTrue(hasRecords);
 
@@ -31,14 +31,14 @@ namespace TestDemoSQRS
         public void InsertNewRecordTest()
         {
             //Arrange
-            var heroesCount = _repository.GetHeroes().Count;
+            var heroesCount = _repository.GetHeroes().Result.Count;
             HeroModel newHero = new() {FirstName = "Mike", LastName = "Wazowski"};
             //Done in Ctor
 
             //Act
             TestContext.WriteLine("Inserting new person Record");
             _repository.InsertHero(newHero.FirstName, newHero.LastName);
-            var countAfterInsert = _repository.GetHeroes().Count();
+            var countAfterInsert = _repository.GetHeroes().Result.Count();
             //Assert
             Assert.AreEqual(heroesCount + 1, countAfterInsert);
 
