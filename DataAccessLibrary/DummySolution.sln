@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{50CC9F31-FCA4-4E7B-9DE9-359F04EFC6B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDemoSQRS", "TestDemoSQRS\TestDemoSQRS.csproj", "{2C8366AA-2A70-47BE-BE5C-EF0DB17258DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDemoSQRS", "TestDemoSQRS\TestDemoSQRS.csproj", "{2C8366AA-2A70-47BE-BE5C-EF0DB17258DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{8E6FD20B-BE80-4C1A-A6B3-DD34BC2F362F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{8E6FD20B-BE80-4C1A-A6B3-DD34BC2F362F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
