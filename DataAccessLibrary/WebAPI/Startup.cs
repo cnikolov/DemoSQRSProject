@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using DataAccessLibrary.Repositories;
 using MediatR;
 using WebAPI.PipelineBehaviours;
+using WebAPI.Validation;
 
 namespace WebAPI
 {
@@ -31,8 +32,10 @@ namespace WebAPI
             services.AddSingleton<IHeroRepository, HeroRepository>();
             services.AddMediatR(typeof(Startup).Assembly);
             services.AddMemoryCache();
+            services.AddValidators();
             //Behaviors Order is important
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehaviour<,>));
 
 

@@ -25,12 +25,12 @@ namespace DataAccessLibrary.Repositories
             Thread.Sleep(Throttle);
             return Task.FromResult(_heroes);
         }
-        public HeroModel InsertHero(string firstName, string lastName)
+        public Task<HeroModel> InsertHero(string firstName, string lastName)
         {
             HeroModel hero = new() { FirstName = firstName, LastName = lastName };
             hero.Id = _heroes.Max(x => x.Id) + 1;
             _heroes.Add(hero);
-            return hero;
+            return Task.FromResult(hero);
         }
 
         public Task<HeroModel> GetHeroById(int id)
