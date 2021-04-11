@@ -5,12 +5,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using DataAccessLibrary.Repositories;
 using MediatR;
+using WebAPI.Contracts;
 
 namespace WebAPI.Queries
 {
     public static class GetHeroes
     {
-        public record Query() : IRequest<List<HeroViewModel>>;
+        public record Query() : IRequest<List<HeroViewModel>>, ICacheable
+        {
+            public string CacheKey => "GetHeroes";
+        }
+
         public record HeroViewModel(string FirstName, string LastName);
 
         public class Handler : IRequestHandler<Query, List<HeroViewModel>>

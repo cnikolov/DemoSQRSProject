@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using DataAccessLibrary.Models;
 
@@ -9,6 +10,7 @@ namespace DataAccessLibrary.Repositories
     {
         //new () c#9 Feature
         private readonly List<HeroModel> _heroes = new();
+        private const int Throttle = 1000 * 10;
         public HeroRepository()
         {
             SeedSampleData();
@@ -20,6 +22,7 @@ namespace DataAccessLibrary.Repositories
         }
         public Task<List<HeroModel>>  GetHeroes()
         {
+            Thread.Sleep(Throttle);
             return Task.FromResult(_heroes);
         }
         public HeroModel InsertHero(string firstName, string lastName)

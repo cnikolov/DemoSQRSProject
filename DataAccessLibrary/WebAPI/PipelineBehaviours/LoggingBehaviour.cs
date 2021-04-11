@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace WebAPI.PipelineBehaviours
 {
-    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest
+    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly ILogger<LoggingBehaviour<TRequest, TResponse>> _logger;
         private const int Second = 1000;
@@ -25,7 +25,7 @@ namespace WebAPI.PipelineBehaviours
             // Post Logic
             _logger.LogInformation($"{queryName} is finished in {timer.ElapsedMilliseconds}ms");
             if(timer.ElapsedMilliseconds > Second)
-                _logger.LogWarning($"{queryName} took longer than it should take ${timer.ElapsedMilliseconds}ms");
+                _logger.LogWarning($"{queryName} took longer than it should take {timer.ElapsedMilliseconds}ms");
 
             return response;
         }

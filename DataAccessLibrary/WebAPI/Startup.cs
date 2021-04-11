@@ -30,8 +30,12 @@ namespace WebAPI
             });
             services.AddSingleton<IHeroRepository, HeroRepository>();
             services.AddMediatR(typeof(Startup).Assembly);
+            services.AddMemoryCache();
             //Behaviors Order is important
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehaviour<,>));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
