@@ -8,5 +8,6 @@ namespace DataAccessLibrary.Repositories
     {
         public Task<List<HeroModel>> GetHeroes();
         public HeroModel InsertHero(string firstName, string lastName);
+        public Task<HeroModel> GetHeroById(int id);
     }
 }

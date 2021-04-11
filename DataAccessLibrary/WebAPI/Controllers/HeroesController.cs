@@ -23,5 +23,11 @@ namespace WebAPI.Controllers
             var heroes = await _mediator.Send(new GetHeroes.Query());
             return heroes;
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var hero = await _mediator.Send(new GetHeroById.Query(id));
+            return hero == null ? NotFound() : Ok(hero);
+        }
     }
 }

@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DataAccessLibrary.Repositories;
 using System.Linq;
-using System.Threading.Tasks;
 using DataAccessLibrary.Models;
 
 namespace TestDemoSQRS
@@ -41,6 +40,16 @@ namespace TestDemoSQRS
             var countAfterInsert = _repository.GetHeroes().Result.Count();
             //Assert
             Assert.AreEqual(heroesCount + 1, countAfterInsert);
+
+        }
+        [TestMethod]
+        public void GetHeroById()
+        {
+            //Arrange
+            //Act
+            var hero = _repository.GetHeroById(1).Result;
+            //Assert
+            Assert.IsNotNull(hero);
 
         }
     }

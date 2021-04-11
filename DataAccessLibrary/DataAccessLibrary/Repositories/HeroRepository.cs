@@ -29,5 +29,10 @@ namespace DataAccessLibrary.Repositories
             _heroes.Add(hero);
             return hero;
         }
+
+        public Task<HeroModel> GetHeroById(int id)
+        {
+            return Task.FromResult(_heroes.FirstOrDefault(x => x.Id == id));
+        }
     }
 }
